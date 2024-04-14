@@ -1,4 +1,3 @@
-
 'use client'
 import React,{useEffect,useState} from "react";
 import { getAuth,RecaptchaVerifier,signInWithPhoneNumber } from "firebase/auth";
@@ -35,7 +34,8 @@ export default function login() {
         setOtp(e.target.value);
     }
 
-    const handleSendOtp = async() =>{
+    const handleSendOtp = async(e) =>{
+      e.preventDefault();
         try{
             const formattedPhoneNumber =    `+${phoneNumber.replace(/\D/g,'')}`;
             const confirmation = await signInWithPhoneNumber(auth,formattedPhoneNumber,window.recaptchaVerifier);
@@ -47,18 +47,22 @@ export default function login() {
 
         }catch(error){
             console.error(error);
+          
         }
     };
 
-    const handleOTPSubmit = async() =>{
+    const handleOTPSubmit = async(e) =>{
+      e.preventDefault();
         try{
             await confirmationResult.confirm(otp);
+            console.log("confi",confirmationResult);
             const userCredential =  getAuth(app).currentUser;
         console.log("User Credential:", userCredential);
             setOtp('');
-            router.push('/homepage');
+            router.push('/login');
         } catch(error){
             console.error(error);
+            alert("invalid otp");
         }
     };
     return (
@@ -91,7 +95,7 @@ export default function login() {
                     placeholder="Enter phone number with country code"
                     autoComplete="number"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -119,13 +123,16 @@ export default function login() {
                      placeholder="Enter OTP"
                      autoComplete="otp"
                      required
-                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                     className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                    />
                     
                  
                 </div>
               </div>
   }
+   {!otpSent && (
+                <div id = "recaptcha-container">
+                    </div>)}
               <div>
                 <button
                   type="submit"
@@ -134,9 +141,7 @@ export default function login() {
                 >
                   {otpSent ? "Submit OTP" : "Send Otp"}
                 </button>
-                {!otpSent && (
-                <div id = "recaptcha-container">
-                    </div>)}
+               
               </div>
             </form>
           </div>

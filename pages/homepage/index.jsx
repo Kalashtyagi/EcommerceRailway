@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Product, HeroBanner, SaleProduct } from '../components/index';
-import { client } from '../lib/client';
+import { Product, HeroBanner, SaleProduct } from '../../components/index';
+import { client } from '../../lib/client';
 
 
 export default function Home({ products, saleProducts }) {
