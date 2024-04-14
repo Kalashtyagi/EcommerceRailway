@@ -131,11 +131,11 @@ export default function Cart() {
                         </p>
                         {item.price ? (
                           <p className="mt-1 text-sm font-medium font-paragraph text-gray-900">
-                            €{item.price}
+                            ₹item.price}
                           </p>
                         ) : (
                           <p className="mt-1 text-sm font-medium font-paragraph text-gray-900">
-                            €{item.salePrice}
+                            ₹{item.salePrice}
                           </p>
                         )}
                       </div>
@@ -205,7 +205,7 @@ export default function Cart() {
                 <div className="flex items-center justify-between">
                   <dt className="text-sm text-gray-600">Subtotal</dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    €{totalPrice}
+                  ₹{totalPrice}
                   </dd>
                   {console.log(totalPrice)}
                 </div>
@@ -229,7 +229,7 @@ export default function Cart() {
                     <dd className="text-sm font-medium text-gray-900">Free</dd>
                   ) : (
                     <dd className="text-sm font-medium text-gray-900">
-                      €15.00
+                      ₹15.00
                     </dd>
                   )}
                 </div>
@@ -240,11 +240,11 @@ export default function Cart() {
                   </dt>
                   {totalPrice > 150 ? (
                     <dd className="text-sm font-medium text-gray-900">
-                      €{totalPrice}
+                      ₹{totalPrice}
                     </dd>
                   ) : (
                     <dd className="text-sm font-medium text-gray-900">
-                      €{totalPrice + 15}
+                      ₹{totalPrice + 15}
                     </dd>
                   )}
                 </div>

@@ -1,11 +1,38 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-export default function login() {
-
+export default function Login() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('profile');
+  const [pfNumber,setPfNumber] = useState('');
+  const [ppoNumber,setPpoNumber] = useState('');
+
+  const users = {
+    pf: "12345",
+    ppo: "67890"
+  }
+
+  const handleLogin = () =>{
+    if (activeTab === 'profile'){
+      if(pfNumber === users.pf){
+        toast.success('Login successfully with PF Number!');
+        router.push('/homepage');
+      }else {
+        toast.error('Incorrect PF number');
+      }
+    }else if(activeTab === 'dashboard'){
+      if(ppoNumber === users.ppo){
+        toast.success("Login successfully with PPO number!");
+        router.push('/homepage');
+      }else{
+        toast.error("Incorrect PPO number!");
+      }
+    }
+  };
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
@@ -40,6 +67,8 @@ export default function login() {
               <input
                 id="pf"
                 name="pf"
+                value={pfNumber}
+                onChange = {(e)=>setPfNumber(e.target.value)}
                 type="text"
                 placeholder="Enter PF Number"
                 required
@@ -54,6 +83,8 @@ export default function login() {
                 name="ppo"
                 type="text"
                 placeholder="Enter PPO Number"
+                value={ppoNumber}
+                onChange={(e)=>setPpoNumber(e.target.value)}
                 required
                 className="block w-full p-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -61,13 +92,14 @@ export default function login() {
           )}
           <button
             type="submit"
-            onClick={()=>router.push('/homepage')}
+            onClick={handleLogin}
             className="mt-4 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Login
           </button>
         </div>
       </div>
+      <ToastContainer position="top-center" />
     </div>
   );
 }

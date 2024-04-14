@@ -3,8 +3,10 @@ import React,{useEffect,useState} from "react";
 import { getAuth,RecaptchaVerifier,signInWithPhoneNumber } from "firebase/auth";
 import { app } from "./config";
 import { useRouter } from "next/router";
+import {ToastContainer,toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function login() {
+export default function Login() {
     const [phoneNumber,setPhoneNumber] = useState('');
     const [otp,setOtp] = useState('');
     const[confirmationResult,setConfirmationResult] = useState(null);
@@ -18,7 +20,6 @@ export default function login() {
                  'size':'normal',
                  'callback':(response) =>{
                     console.log("res",response);
-
                  },
                  'expired-callback':() =>{
 
@@ -43,7 +44,7 @@ export default function login() {
             console.log(confirmation,"sendOtp")
             setOtpSent(true);
             setPhoneNumber('');
-            alert("OTP has been sent");
+            toast.success("OTP has been sent");
 
         }catch(error){
             console.error(error);
@@ -59,15 +60,19 @@ export default function login() {
             const userCredential =  getAuth(app).currentUser;
         console.log("User Credential:", userCredential);
             setOtp('');
-            router.push('/login');
+            toast.success("Otp verified successfully!")
+            setTimeout(() => {
+                router.push('/login');
+            }, 2000);
+            
         } catch(error){
             console.error(error);
-            alert("invalid otp");
+            toast.error("invalid otp");
         }
     };
     return (
       <>
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="flex min-h-full  flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             {/* <img
               className="mx-auto h-10 w-auto"
@@ -145,6 +150,7 @@ export default function login() {
               </div>
             </form>
           </div>
+          <ToastContainer position="top-center" />
         </div>
       </>
     )

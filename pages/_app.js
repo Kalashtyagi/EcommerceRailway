@@ -9,7 +9,7 @@ import { StateContext } from '../context/stateContext';
 function MyApp({ Component, pageProps }) {
 
 
-  const isIndexPage = Component.name === 'login';
+  const isIndexPage = Component.name === 'Login';
   return (
     <>
       <StateContext>

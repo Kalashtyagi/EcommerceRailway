@@ -78,10 +78,10 @@ export default function NavBar() {
                 </div>
 
                 <div className="flex-1 flex invisible sm:visible">
-                  <Link href="/">
+                  <Link href="/homepage">
                     <a onClick={loadingHandler}>
                       <span className="sr-only">Workflow</span>
-                      <p>Rye River Electronics</p>
+                      <p>CLA Electronics</p>
                     </a>
                   </Link>
                 </div>

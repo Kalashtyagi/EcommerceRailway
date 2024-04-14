@@ -25,7 +25,7 @@ export default function Product({ product: { image, name, slug, price } }) {
             {name}
           </h3>
           <p className="mt-1 text-lg font-medium font-paragraph text-gray-900">
-            €{price}
+          ₹{price}
           </p>
         </div>
       </Link>

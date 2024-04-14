@@ -108,7 +108,7 @@ export default function ProductDetails({ product }) {
 
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl text-gray-700 font-paragraph">€{price}</p>
+              <p className="text-3xl text-gray-700 font-paragraph">₹{price}</p>
             </div>
 
             <div className="mt-6">
