@@ -131,7 +131,7 @@ export default function Cart() {
                         </p>
                         {item.price ? (
                           <p className="mt-1 text-sm font-medium font-paragraph text-gray-900">
-                            ₹item.price}
+                            ₹{item.price}
                           </p>
                         ) : (
                           <p className="mt-1 text-sm font-medium font-paragraph text-gray-900">
