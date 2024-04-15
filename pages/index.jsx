@@ -7,7 +7,7 @@ import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
-    const [phoneNumber,setPhoneNumber] = useState('');
+    const [phoneNumber,setPhoneNumber] = useState('+91');
     const [otp,setOtp] = useState('');
     const[confirmationResult,setConfirmationResult] = useState(null);
     const[otpSent,setOtpSent] = useState(false);
@@ -62,7 +62,7 @@ export default function Login() {
             setOtp('');
             toast.success("Otp verified successfully!")
             setTimeout(() => {
-                router.push('/login');
+                router.push('/Login');
             }, 2000);
             
         } catch(error){
