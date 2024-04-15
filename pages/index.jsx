@@ -1,7 +1,7 @@
 'use client'
 import React,{useEffect,useState} from "react";
 import { getAuth,RecaptchaVerifier,signInWithPhoneNumber } from "firebase/auth";
-import { app } from "./config";
+import { app } from "../config";
 import { useRouter } from "next/router";
 import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -86,6 +86,7 @@ export default function Login() {
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">
+              {otpSent && (
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Mobile Number
@@ -104,6 +105,7 @@ export default function Login() {
                   />
                 </div>
               </div>
+              )}
               {otpSent &&
               <div>
                
