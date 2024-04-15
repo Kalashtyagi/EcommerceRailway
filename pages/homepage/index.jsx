@@ -2,9 +2,11 @@ import React from 'react';
 
 import { Product, HeroBanner, SaleProduct } from '../../components/index';
 import { client } from '../../lib/client';
+import withAuth from '../../utils/withAuth';
 
 
-export default function Home({ products, saleProducts }) {
+
+function Home({ products, saleProducts }) {
   return (
     <>
       <div className="bg-white">
@@ -50,3 +52,5 @@ export const getServerSideProps = async () => {
     props: { products, saleProducts },
   };
 };
+
+export default withAuth(Home);

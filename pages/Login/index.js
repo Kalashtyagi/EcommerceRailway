@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import {ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import withAuth from '../../utils/withAuth';
 
-
-export default function Login() {
+ function Login() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState('profile');
+  const [activeTab, setActiveTab] = useState('pf');
   const [pfNumber,setPfNumber] = useState('');
   const [ppoNumber,setPpoNumber] = useState('');
 
@@ -16,14 +16,14 @@ export default function Login() {
   }
 
   const handleLogin = () =>{
-    if (activeTab === 'profile'){
+    if (activeTab === 'pf'){
       if(pfNumber === users.pf){
         toast.success('Login successfully with PF Number!');
         router.push('/homepage');
       }else {
         toast.error('Incorrect PF number');
       }
-    }else if(activeTab === 'dashboard'){
+    }else if(activeTab === 'ppo'){
       if(ppoNumber === users.ppo){
         toast.success("Login successfully with PPO number!");
         router.push('/homepage');
@@ -36,25 +36,30 @@ export default function Login() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-lg p-6 bg-white shadow-md rounded-lg">
+      <div className="w-full max-w-lg p-4 bg-white shadow-md rounded-lg">
         <div className="border-b border-gray-200 dark:border-gray-700">
+        <img
+              className="mx-auto h-10 w-auto"
+              src="https://cdn-icons-png.freepik.com/256/5645/5645402.png?ga=GA1.1.1641609829.1711710599&"
+              alt="CLA Global"
+            />
           <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-styled-tab" role="tablist">
             <li className="me-2" role="presentation">
               <button
-                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'profile' ? 'text-purple-600 border-purple-600' : 'text-gray-500 hover:text-gray-600 border-gray-100 hover:border-gray-300'}`}
-                onClick={() => setActiveTab('profile')}
+                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'pf' ? 'text-purple-600 border-purple-600' : 'text-gray-500 hover:text-gray-600 border-gray-100 hover:border-gray-300'}`}
+                onClick={() => setActiveTab('pf')}
                 role="tab"
-                aria-selected={activeTab === 'profile'}
+                aria-selected={activeTab === 'pf'}
               >
                 LOGIN WITH PF NUMBER
               </button>
             </li>
             <li className="me-2" role="presentation">
               <button
-                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'dashboard' ? 'text-purple-600 border-purple-600' : 'text-gray-500 hover:text-gray-600 border-gray-100 hover:border-gray-300'}`}
-                onClick={() => setActiveTab('dashboard')}
+                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === 'ppo' ? 'text-purple-600 border-purple-600' : 'text-gray-500 hover:text-gray-600 border-gray-100 hover:border-gray-300'}`}
+                onClick={() => setActiveTab('ppo')}
                 role="tab"
-                aria-selected={activeTab === 'dashboard'}
+                aria-selected={activeTab === 'ppo'}
               >
                 LOGIN WITH PPO NUMBER
               </button>
@@ -62,7 +67,7 @@ export default function Login() {
           </ul>
         </div>
         <div id="default-styled-tab-content" className="mt-4">
-          {activeTab === 'profile' && (
+          {activeTab === 'pf' && (
             <div className="mt-2">
               <input
                 id="pf"
@@ -76,7 +81,7 @@ export default function Login() {
               />
             </div>
           )}
-          {activeTab === 'dashboard' && (
+          {activeTab === 'ppo' && (
             <div className="mt-2">
               <input
                 id="ppo"
@@ -103,3 +108,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default  withAuth(Login);
