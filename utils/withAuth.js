@@ -13,13 +13,18 @@ const withAuth = (WrappedComponent) => {
     //     if (!user) {
     //       router.push('/'); // Redirect to login page if user is not authenticated
     //     }
+    //     console.log(user,"uuuu")
     //   });
 
     //   return () => unsubscribe();
-    const pf = localStorage.getItem("pf");
-    const ppo = localStorage.getItem("ppo");
-    if(!pf || !ppo){
-        router.push('/');   
+    // const pf = localStorage.getItem("pf");
+    // const ppo = localStorage.getItem("ppo");
+    // if(!pf || !ppo){
+    //     router.push('/');   
+    // }
+    const mNum = localStorage.getItem("mobile");
+    if(!mNum){
+        router.push('/');
     }
     }, []);
 

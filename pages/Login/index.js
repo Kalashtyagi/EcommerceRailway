@@ -111,5 +111,5 @@ import withAuth from '../../utils/withAuth';
   );
 }
 
-// export default  withAuth(Login);
-export default Login;
+export default  withAuth(Login);
+// export default Login;

@@ -50,6 +50,7 @@ export default function Login() {
                 setOtpSent(true);
                 setPhoneNumber('');
                 toast.success("OTP has been sent");
+                localStorage.setItem("mobile",phoneNumber);
             }
            
 
