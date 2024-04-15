@@ -68,7 +68,7 @@ export default function Login() {
             const userCredential =  getAuth(app).currentUser;
         console.log("User Credential:", userCredential);
             setOtp('');
-            toast.success("Otp verified successfully!")
+            toast.success("Otp verified successfully!");
             setTimeout(() => {
                 router.push('/Login');
             }, 2000);
@@ -80,6 +80,8 @@ export default function Login() {
     };
     return (
       <>
+      <div style={{width:'500px',height:'500px',border:'1px solid ',textAlign:'center',margin:'auto',marginTop:'50px',boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)'}}>
+
         <div className="flex min-h-full  flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
@@ -166,6 +168,7 @@ export default function Login() {
             </form>
           </div>
           <ToastContainer position="top-center" />
+        </div>
         </div>
       </>
     )

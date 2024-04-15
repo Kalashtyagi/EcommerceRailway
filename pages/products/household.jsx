@@ -2,8 +2,9 @@ import React from 'react';
 
 import { Product } from '../../components/index';
 import { client } from '../../lib/client';
+import withAuth from '../../utils/withAuth';
 
-export default function household({ products }) {
+ function household({ products }) {
   return (
     <>
       <div className="bg-white">
@@ -35,3 +36,5 @@ export const getServerSideProps = async () => {
     props: { products },
   };
 };
+
+export default withAuth(household);

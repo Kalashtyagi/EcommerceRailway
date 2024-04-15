@@ -6,6 +6,8 @@ import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/outline';
 
 import { client, urlFor } from '../../../lib/client';
 import { useStateContext } from '../../../context/stateContext';
+import withAuth from '../../utils/withAuth';
+
 
 const shippingReturns = {
   details: [
@@ -34,7 +36,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ProductDetails({ product }) {
+ function ProductDetails({ product }) {
   const { image, name, originalPrice, salePrice, details, features } = product;
 
   const [index, setIndex] = useState(0);
@@ -300,3 +302,6 @@ export const getStaticProps = async ({ params: { slug } }) => {
     return { notFound: true };
   }
 };
+
+
+export default withAuth(ProductDetails);
