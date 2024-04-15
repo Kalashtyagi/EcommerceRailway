@@ -6,7 +6,7 @@ import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/outline';
 
 import { client, urlFor } from '../../../lib/client';
 import { useStateContext } from '../../../context/stateContext';
-import withAuth from '../../utils/withAuth';
+import withAuth from '../../../utils/withAuth';
 
 
 const shippingReturns = {
