@@ -86,8 +86,9 @@ export default function Login() {
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">
-              
-              <div>
+
+             {!otpSent && (
+                <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Mobile Number
                 </label>
@@ -105,6 +106,8 @@ export default function Login() {
                   />
                 </div>
               </div>
+             )} 
+              
              
               {otpSent &&
               <div>

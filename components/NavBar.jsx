@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Router from 'next/router';
+// import Router from 'next/router';
 import { Disclosure, Menu, Popover } from '@headlessui/react';
 import { SearchIcon, ChevronDownIcon } from '@heroicons/react/solid';
 import { MenuIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline';
 import toast from 'react-hot-toast';
+import {useRouter} from 'next/router';
+
 
 import { useStateContext } from '../context/stateContext';
 import { client } from '../lib/client';
@@ -24,11 +26,19 @@ export default function NavBar() {
   const [searchData, setSearchData] = useState('');
   const { totalQuantities, loadingHandler } = useStateContext();
 
+  const router = new useRouter();
+
   function changeHandler(e) {
     const value = e.target.value;
     setSearchData({
       [e.target.name]: value,
     });
+  }
+
+  function signOut(){
+    toast.success('Logout Successfully');
+    router.push('/');
+
   }
 
   const searchBar = async (productName) => {
@@ -159,7 +169,13 @@ export default function NavBar() {
                         <span className="sr-only">items in cart, view bag</span>
                       </a>
                     </Link>
+                   
+
                   </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-6 ml-4" >
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+</svg>
+<span style={{cursor:"pointer"}} onClick={signOut}>Logout</span>
                 </div>
               </div>
             </div>
