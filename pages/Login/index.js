@@ -19,6 +19,7 @@ import withAuth from '../../utils/withAuth';
     if (activeTab === 'pf'){
       if(pfNumber === users.pf){
         toast.success('Login successfully with PF Number!');
+        localStorage.setItem("pf",pfNumber);
         router.push('/homepage');
       }else {
         toast.error('Incorrect PF number');
@@ -26,6 +27,7 @@ import withAuth from '../../utils/withAuth';
     }else if(activeTab === 'ppo'){
       if(ppoNumber === users.ppo){
         toast.success("Login successfully with PPO number!");
+        localStorage.setItem("ppo",ppoNumber);
         router.push('/homepage');
       }else{
         toast.error("Incorrect PPO number!");
@@ -109,4 +111,5 @@ import withAuth from '../../utils/withAuth';
   );
 }
 
-export default  withAuth(Login);
+// export default  withAuth(Login);
+export default Login;

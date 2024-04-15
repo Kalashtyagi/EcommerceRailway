@@ -8,14 +8,19 @@ const withAuth = (WrappedComponent) => {
     const router = useRouter();
 
     useEffect(() => {
-      const auth = getAuth(app);
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (!user) {
-          router.push('/'); // Redirect to login page if user is not authenticated
-        }
-      });
+    //   const auth = getAuth(app);
+    //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //     if (!user) {
+    //       router.push('/'); // Redirect to login page if user is not authenticated
+    //     }
+    //   });
 
-      return () => unsubscribe();
+    //   return () => unsubscribe();
+    const pf = localStorage.getItem("pf");
+    const ppo = localStorage.getItem("ppo");
+    if(!pf || !ppo){
+        router.push('/');   
+    }
     }, []);
 
     return <WrappedComponent {...props} />;

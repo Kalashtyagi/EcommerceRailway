@@ -6,6 +6,7 @@ import {
   EmojiSadIcon,
 } from '@heroicons/react/outline';
 import toast from 'react-hot-toast';
+import withAuth from '../../utils/withAuth';
 
 import { useStateContext } from '../../context/stateContext';
 import { urlFor } from '../../lib/client';
@@ -18,7 +19,7 @@ import {
   XIcon,
 } from '@heroicons/react/solid';
 
-export default function Cart() {
+ function Cart() {
   const cartRef = useRef();
 
   const {
@@ -269,3 +270,5 @@ export default function Cart() {
     </div>
   );
 }
+
+export default withAuth(Cart);

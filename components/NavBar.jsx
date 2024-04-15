@@ -38,6 +38,7 @@ export default function NavBar() {
   function signOut(){
     toast.success('Logout Successfully');
     router.push('/');
+    localStorage.clear();
 
   }
 
