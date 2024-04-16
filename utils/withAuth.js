@@ -7,6 +7,8 @@ const withAuth = (WrappedComponent) => {
   return (props) => {
     const router = useRouter();
 
+    
+
     useEffect(() => {
     //   const auth = getAuth(app);
     //   const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -22,9 +24,19 @@ const withAuth = (WrappedComponent) => {
     // if(!pf || !ppo){
     //     router.push('/');   
     // }
+  
+    // if(!mNum && (!pf || !ppo)){
+    //     router.push('/');
+    // }
     const mNum = localStorage.getItem("mobile");
-    if(!mNum){
-        router.push('/');
+    const pf = localStorage.getItem("pf");
+    const ppo = localStorage.getItem("ppo");
+
+    if(mNum && (!pf &&  !ppo)){
+        router.push('/Login')  
+    }else if(!mNum && (!pf && !ppo)){
+        router.push('/')
+
     }
     }, []);
 

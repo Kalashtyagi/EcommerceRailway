@@ -17,16 +17,19 @@ import 'firebase/auth';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAYrY1hVcGUn-MsaONeRnG1LPjhUl_Rjd0",
-  authDomain: "auth-4a945.firebaseapp.com",
-  projectId: "auth-4a945",
-  storageBucket: "auth-4a945.appspot.com",
-  messagingSenderId: "881957604450",
-  appId: "1:881957604450:web:e5d678934ecdc10437953b",
-  measurementId: "G-YJYPSM5PWE"
+  apiKey: "AIzaSyD7AY59Dr2yDGoOMYYbKuI2aywA_cXe9Mc",
+  authDomain: "phoneauth-3d64d.firebaseapp.com",
+  projectId: "phoneauth-3d64d",
+  storageBucket: "phoneauth-3d64d.appspot.com",
+  messagingSenderId: "960929564067",
+  appId: "1:960929564067:web:b4c7e8ec9e48197b41c616",
+  measurementId: "G-2EBETMNFRP"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 export {app};
